@@ -14,7 +14,8 @@ alerts = {}
 # Start command
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-    bot.reply_to(message, "👋 Welcome to KryptoPulse Live Bot!
+    bot.reply_to(message, "👋 Welcome to KryptoPulse Live Bot!")
+
 
 Use /setalert COIN PRICE to set a price alert.
 Example: /setalert BTC 100000")
