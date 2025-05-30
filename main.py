@@ -18,7 +18,8 @@ def send_welcome(message):
 
 
 Use /setalert COIN PRICE to set a price alert.
-Example: /setalert BTC 100000")
+bot.reply_to(message, "Example: /setalert BTC 100000")
+
 
 # Set alert command
 @bot.message_handler(commands=['setalert'])
