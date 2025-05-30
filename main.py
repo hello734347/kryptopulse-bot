@@ -29,21 +29,18 @@ def set_alert(message):
         coin = coin.upper()
         price = float(price)
         alerts[message.chat.id] = {"coin": coin, "price": price}
-        bot.send_message(message.chat.id, f"✅ Alert Set Successfully!
-
-🎯 Coin: {coin}
-💰 Target Price: ${price}
-📉 Trigger: When price drops to or below target")
-    except:
-        bot.send_message(message.chat.id, "❌ Invalid format. Use: /setalert COIN PRICE")
-
+    bot.send_message(message.chat.id, f"""✅ Alert Set Successfully!
+🎯 Coin: {coin.upper()}
+💰 Current Price: ${current_price:,.2f}
+🔔 Alert Price: ${alert_price:,.2f}
+📉 Trigger: When price drops to or below target""")
 # Function to get current price (using CoinGecko API)
 def get_price(coin):
     url = f"https://api.coingecko.com/api/v3/simple/price?ids={coin.lower()}&vs_currencies=usd"
     response = requests.get(url)
     data = response.json()
     return data.get(coin.lower(), {}).get("usd")
-
+    
 # Background job to check alerts
 def check_alerts():
     while True:
