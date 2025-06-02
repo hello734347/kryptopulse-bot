@@ -14,16 +14,24 @@ def send_welcome(message):
 @bot.message_handler(commands=["setalert"])
 def set_alert(message):
     try:
-        _, coin, price = message.text.split()
-        alert_price = float(price)
-        coin = coin.upper()
+_, symbol, price = message.text.split()
+alert_price = float(price)
 
-        response = requests.get(f"https://api.coingecko.com/api/v3/simple/price?ids={coin.lower()}&vs_currencies=usd")
-        data = response.json()
+# Convert symbol like BTC to CoinGecko ID like bitcoin
+coin_map = {
+    "BTC": "bitcoin",
+    "ETH": "ethereum",
+    "BNB": "binancecoin",
+    "DOGE": "dogecoin",
+    "SOL": "solana",
+    "ADA": "cardano"
+}
 
-        if coin.lower() not in data:
-            bot.send_message(message.chat.id, "❌ Invalid coin name. Try BTC, ETH, etc.")
-            return
+coin = coin_map.get(symbol.upper())
+
+if not coin:
+    bot.send_message(message.chat.id, "❌ Unsupported coin. Try BTC, ETH, BNB, etc.")
+    return
 
         current_price = data[coin.lower()]["usd"]
 
