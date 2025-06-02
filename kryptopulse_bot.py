@@ -2,7 +2,7 @@ import telebot
 import requests
 from keep_alive import keep_alive  # optional for hosting
 
-BOT_TOKEN = "YOUR_TELEGRAM_BOT_TOKEN"
+BOT_TOKEN = "7819497291:AAEFQF6BB7eeYjR49sOtgNvZ2Xh3udOHj0E"
 bot = telebot.TeleBot(BOT_TOKEN)
 
 alerts = {}
