@@ -3,7 +3,7 @@ import telebot
 import requests
 from keep_alive import keep_alive  # optional, for hosting on Render
 
-BOT_TOKEN = "7544415750:AAF2WhDytMQdheNHKGsRRbC3h_bPhveKRNc"
+BOT_TOKEN = "7819497291:AAEFQF6BB7eeYjR49sOtgNvZ2Xh3udOHj0E"
 bot = telebot.TeleBot(BOT_TOKEN)
 
 alerts = {}
